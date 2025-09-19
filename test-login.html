@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Login</title>
+</head>
+<body>
+    <h1>Teste de Login</h1>
+    <button onclick="testarLogin()">Testar Login</button>
+    <div id="resultado"></div>
+
+    <script>
+        async function testarLogin() {
+            try {
+                const response = await fetch('http://localhost:8080/usuario/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'teste@teste.com',
+                        senha: '123456'
+                    })
+                });
+                
+                const data = await response.text();
+                document.getElementById('resultado').innerHTML = `
+                    <p>Status: ${response.status}</p>
+                    <p>Response: ${data}</p>
+                `;
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = `
+                    <p>Erro: ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
