@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:8080/api';
+import { API_BASE_URL as BASE_URL } from './environment.js';
+
+const API_BASE_URL = `${BASE_URL}/api`;
 
 export const API_ENDPOINTS = {
   AUTH: {
